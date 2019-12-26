@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+
+    <!-- 加载提供者 -->
+    <import resource="classpath:spring/dubbo-provider.xml" />
+
+    <!-- 开启自动扫包 -->
+          <context:component-scan base-package="com.weiwo.erp.business.*" />
+
+          <context:component-scan base-package="com.weiwo.erp.actable.*" />
+
+        <!-- 启动AOP支持 -->
+        <aop:aspectj-autoproxy/>
+
+         <!-- 引入外部数据源配置信息 -->
+        <!-- 引入属性文件 -->
+        <context:property-placeholder location="classpath:spring/jdbc.properties" />
+
+
+        <!-- 配置数据源 -->
+         <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+             <property name="driverClassName" value="${jdbc.driver}"></property>
+             <property name="url" value="${jdbc.url}"></property>
+             <property name="username" value="${jdbc.username}"></property>
+             <property name="password" value="${jdbc.password}"></property>
+         </bean>
+
+        <!-- 配置Session工厂 -->
+<!--    <mybatis:scan base-package="com.weiwo.erp.actable.mapper,com.weiwo.erp.system.mapper" />-->
+         <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+             <property name="dataSource" ref="dataSource"></property>
+            <!-- 加载mybatis.cfg.xml文件-->
+             <property name="configLocation" value="classpath:mybatis/mybatis.xml"></property>
+<!--            &lt;!&ndash; 自动扫描需要定义类别名的包，将包内的JAVA类的类名作为类别名 &ndash;&gt;-->
+             <property name="mapperLocations" >
+                 <array>
+                     <value>classpath*:com/weiwo/erp/actable/mapper/*.xml</value>
+                     <value>classpath*:com/weiwo/erp/business/mapper/*.xml</value>
+                 </array>
+             </property>
+        </bean>
+
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.weiwo.erp.business.mapper,com.weiwo.erp.actable.mapper" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+
+    <!-- 开启spring对事务的注解支持 -->
+    <tx:annotation-driven/>
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <!-- 配置基于注解的声明式事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+
+</beans>

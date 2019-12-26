@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+        <!-- 模态框头部 -->
+        <div class="modal-header">
+            <h4 class="modal-title">模态框头部</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- 模态框主体 -->
+        <div class="modal-body">
+
+
+
+
+            <div class="col-xs-1">
+                <!-- required for floating -->
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs tabs-left">
+                    <li class="active"><a href="#1" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-list-alt" style="margin-right: 10px;"></span>基本信息</a>
+                    </li>
+                    <li class=""><a href="#2" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-th-large" style="margin-right: 10px;"></span>产品信息</a>
+                    </li>
+                    <li class=""><a href="#3" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-book" style="margin-right: 10px;"></span>评价</a>
+                    </li>
+                    <!--<li class=""><a href="#4" data-toggle="tab" aria-expanded="false">Settings</a>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+
+            <div class="col-xs-11">
+                <!-- Tab panes -->
+                <div class="tab-content">
+
+                    <div class="tab-pane active" id="1" onload="">
+
+                    </div>
+                    <div class="tab-pane" id="2">Messages 111Tab.</div>
+                    <div class="tab-pane" id="3">
+                        <!--评论-->
+                        <div class="x_panel">
+                            <div class="x_content">
+                                <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+                                    <div class="form-group">
+                                        <label>评论</label>
+                                        <textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-validation-threshold="10"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                            <button type="submit" class="btn btn-success">提交</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="4">Settings Tab.</div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+
+
+        </div>
+
+        <!--            &lt;!&ndash; 模态框底部 &ndash;&gt;-->
+        <!--            <div class="modal-footer">-->
+        <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>-->
+        <!--            </div>-->
+
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#1").load("/page.do?url=business/contract/detail")
+    });
+//模态窗高度赋值
+    var mdH = $(".modal").height();
+    $(".tab-pane").css("min-height",mdH + "px")
+</script>
+</body>
+</html>

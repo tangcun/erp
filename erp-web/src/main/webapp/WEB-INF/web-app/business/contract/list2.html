@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DataTables | Gentelella</title>
+
+    <!-- util Style -->
+    <link href="/static/src/scss/util.css" rel="stylesheet">
+
+    <style>
+
+    </style>
+</head>
+<body style="background: #F7F7F7;">
+
+
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <input type="text" value="" id="testIpt" >
+            <button type="button" id="testBtn" onclick="test()">测试</button>
+        </div>
+
+
+
+</body>
+
+<!-- jQuery -->
+<script src="/static/vendors/jquery/dist/jquery.min.js"></script>
+
+<script>
+    function test() {
+        var val1 = $("#testIpt").val();
+        if(!val1){
+            val1 = 40;
+        }
+        $.ajax({//收货地址下拉选
+            type:"post",
+            url:"/contract/findPage2.do",
+            data:{id:val1},
+            success:function (result) {
+                console.log(result);
+            }
+        });
+    }
+
+</script>
+
+</html>

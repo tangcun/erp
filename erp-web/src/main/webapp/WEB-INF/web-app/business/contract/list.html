@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DataTables | Gentelella</title>
+
+    <!-- Bootstrap -->
+    <link href="/static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/static/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="/static/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="/static/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="/static/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="/static/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="/static/src/scss/custom.scss" rel="stylesheet">
+    <!-- util Style -->
+    <link href="/static/src/scss/util.css" rel="stylesheet">
+
+    <style>
+
+    </style>
+</head>
+<body style="background: #F7F7F7;">
+
+
+<!--    <div class="page-title">-->
+<!--        <div class="title_left">-->
+<!--            <h3>合同列表</h3>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>合同列表 <small></small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <input type="text" id="number" name="number" placeholder="合同号" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="businessRelationName"  placeholder="业务员" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="companyName" placeholder="公司名称" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="customerOrder" placeholder="客户订单号" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="productNumber" placeholder="产品编号" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text"  id="shipEndDate" value="" class="form-control has-feedback-left"  placeholder="到货日期" aria-describedby="inputSuccess2Status3">
+<!--                        <input type="text" id="shipEndDate" placeholder="产品到货日期" class="form-control">-->
+                    </div>
+                    <a class="btn btn-primary btn-sm" title='搜索' id="btn_search" onclick="searchPram()"><i class="fa fa-search"></i>搜索</a>
+                    <a class="btn btn-primary btn-sm" title='发文' href="@Url.Action("Create")"><i class="fa fa-plus"></i>添加</a>
+                </form>
+                <div class="x_content">
+
+<!--                    <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>-->
+
+                    <div class="">
+                        <table id="example"  class="table table-striped jambo_table bulk_action">
+                            <thead>
+                            <tr >
+                                <th>
+                                    <input type="checkbox" id="check-all" class="flat">
+                                </th>
+                                <th>合同号</th>
+                                <th>客户单号</th>
+                                <th>总金额</th>
+                                <th>币种</th>
+                                <th>客户公司</th>
+                                <th>发货日期</th>
+                                <th>到货日期</th>
+                                <th>业务员</th>
+                                <th>状态</th>
+                                <th>审核人</th>
+                                <th>是否结算</th>
+                                <th>订单来源</th>
+                                <th>操作</th>
+                                </th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+<!-- 模态框 -->
+<div class="modal fade" id="myModal">
+
+</div>
+
+
+
+
+</body>
+
+<!-- jQuery -->
+<script src="/static/vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="/static/vendors/fastclick/lib/fastclick.js"></script>
+<!-- Datatables -->
+<script src="/static/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/static/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- NProgress -->
+<script src="/static/vendors/nprogress/nprogress.js"></script>
+<!-- iCheck -->
+<script src="/static/vendors/iCheck/icheck.min.js"></script>
+<!-- DateJS -->
+<script src="/static/vendors/DateJS/build/date.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="/static/vendors/moment/min/moment.min.js"></script>
+<script src="/static/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="/static/build/js/custom.js"></script>
+<script src="/static/src/js/util.js"></script>
+<script src="/static/js/business/contract/list.js"></script>
+
+<script>
+    var table;
+    function createCombox(data) {
+        var _html = '<select style="width:100%;">';
+             data.forEach(function (ele, index) {
+                     _html += '<option>' + ele + '</option>';
+                 });
+             _html += '</select>';
+             return _html;
+         }
+
+    function searchPram() {
+        table.draw();
+    }
+
+    $(function () {
+
+
+        table=$('#example').DataTable( {
+            language: {
+                "url": "/static/build/json/datatables_language.json"
+            },
+            ordering: false, // 禁止排序
+            processing: true,
+            searching: false,
+            serverSide: true,
+            aLengthMenu: [15,50,200], //更改显示记录数选项
+            iDisplayLength : 15, //默认显示的记录数
+            // bAutoWidth : false, //是否自适应宽度
+            // bAutoHeight : true, //是否自适应宽度
+            //scrollX: false,//去除横向滚动条
+             dom: '<t><lfip>',
+            "columnDefs": [
+                {
+                    "targets": [1],
+                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
+                        $(cell).click(function () {
+                            //更改input
+                                                 $(this).html('<input type="text" size="16" value="'+cellData+'" style="width: 40%"/>');
+                                                 var aInput = $(this).find(":input");
+                                                 aInput.focus().val();
+                                                 aInput.select();
+
+                                             });
+                                         $(cell).on("blur", ":input", function () {
+                                                 var text = $(this).val();
+                                                 $(cell).html(text);
+                                             })
+                    }
+                }
+            ],
+        //    "order": [[ 1, 'asc' ]],
+            "columns": [
+                {"render": function ( data, type, full, meta ) {return check()},"orderable": false},
+                {"data": "number"},
+                {"data": "customerOrder"},
+                {"data": "total"},
+                {"data": "currency"},
+                {"data": "companyName"},
+                {"data": "shipStartDate","render":function (data) {
+                        return dateToStr(data,"yyyy-M-d");
+                    }},
+                {"data": "shipEndDate","render":function (data) {
+                        return dateToStr(data,"yyyy-M-d");
+                    }},
+                {"data": "businessRelationName"},
+                {"data": "status"},
+                {"data": "activityUserName"},
+                {"data": "accountFlag"},
+                {"data": "source"},
+                {"render": function (data, type, full, meta ) {
+                    return button()
+                    }}
+
+            ],
+            "fnDrawCallback": function(oSettings) {
+                iCheck()
+            },
+            "fnServerData": function (sSource, aoData, fnCallback) {
+                var info = $('#example').DataTable().page.info();
+                aoData.pageNo = info.page;
+                aoData.push(
+                    { "name": "number", "value": $("#number").val() },
+                    { "name": "businessRelationName", "value": $("#businessRelationName").val() },
+                    { "name": "companyName", "value": $("#companyName").val() },
+                    { "name": "customerOrder", "value": $("#customerOrder").val() },
+                    { "name": "productNumber", "value": $("#productNumber").val() },
+                    { "name": "shipEndDate", "value": $("#shipEndDate").val() },
+                    { "name": "pageNo", "value": info.page }
+                );
+                $.ajax({
+                    "dataType": 'json',
+                    "type": "POST",
+                    "url": "/contract/findPage.do",
+                    "data": aoData,
+                    "success": fnCallback
+                });
+            },
+
+
+        } );
+
+
+
+        //加载模态框
+        $('#myModal').load('/page.do?url=business/contract/modal');
+    })
+
+</script>
+
+</html>

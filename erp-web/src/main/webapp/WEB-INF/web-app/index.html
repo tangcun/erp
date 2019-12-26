@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="production/images/favicon.ico" type="image/ico" />
+
+    <title>Gentelella Alela! | </title>
+
+    <!-- Bootstrap -->
+    <link href="/static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/static/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="/static/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="/static/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="/static/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="/static/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="/static/build/css/custom.min.css" rel="stylesheet">
+    <!-- util Style -->
+    <link href="/static/src/scss/util.css" rel="stylesheet">
+    <style>
+      *翻译*
+      解决问题3
+      body{
+        top:0px!important;
+        min-height: 0px!important;
+      }
+      /*解决问题2*/
+      .goog-text-highlight{
+        background-color: transparent!important;
+        -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0)!important;
+        -moz-box-shadow: 0 0px 0px rgba(0, 0, 0, 0)!important;
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0)!important;
+      }
+      /*解决问题1*/
+      .goog-te-banner-frame{
+        display:none
+      }
+
+
+      /**  **/
+      ul.bar_tabs>li:first-child {
+        margin-left: 0!important;
+      }
+      .nav-sm .container.body .nb {
+        margin-left: 30px!important;
+      }
+      ul.bar_tabs {
+        padding: 0!important;
+        margin: 0!important;
+        background: none!important;
+        position: absolute!important;
+        width: 70%!important;
+        top: 31px;
+        left:50%;
+        transform: translate(-50%,0);
+      }
+      .nav-sm .container.body .navml {
+        left:42%!important;
+      }
+      ul.bar_tabs>li {
+        margin-top: -1px;
+        position: relative;
+      }
+      ul.bar_tabs>li.active {
+        margin-top: -1px;
+      }
+      ul.bar_tabs>li a {
+        padding: 3px 17px;
+      }
+      ul.bar_tabs>li>em {
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        display: block;
+        text-align: center;
+        line-height: 11px;
+        font-style:normal;
+        top: -2px;
+        right: 0;
+        color: #73879C;
+        cursor: pointer;
+      }
+      .top_nav .navbar-right {
+        width: auto;
+      }
+      .nav_menu {
+        margin-bottom: 0;
+      }
+      .x_content {
+        padding: 0;
+        margin-top: 0;
+      }
+      @media only screen and (max-width: 400px){
+        ul.bar_tabs>li:first-child {
+          margin-left: 0!important;
+        }
+        ul.bar_tabs>li a {
+          padding:2px;
+        }
+        ul.bar_tabs {
+          width: 100%!important;
+          top: 43px;
+          /*left: 52.5%;*/
+          transform: translate(-50%,0);
+          background:rgba(247,247,247,.5)!important;
+        }
+        .nav-sm .container.body .navml {
+          left:70%!important;
+        }
+        ul.bar_tabs>li {
+          margin-top: 0;
+        }
+        ul.bar_tabs>li.active {
+          margin-top: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <!-- menu profile quick info -->
+          <div class="profile clearfix">
+            <div class="profile_pic">
+              <img src="production/images/img.jpg" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+              <span>Welcome,</span>
+              <h2>John Doe</h2>
+            </div>
+          </div>
+          <!-- /menu profile quick info -->
+          <br />
+
+
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section ">
+              <ul class="nav side-menu">
+                <li class=""><a><i class="fa fa-sitemap"></i>示例<span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a class="page_url" url="production/tables" href="javascript:void(0);">表格</a>
+                    <li><a>Level One<span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li class="sub_menu"><a class="page_url" url="production/general_elements" href="javascript:void(0);">选项卡</a>
+                        </li>
+                        <li><a href="javascript:void(0);">Level Two</a>
+                        </li>
+                        <li><a href="javascript:void(0);">Level Two</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="page_url"  url="production/index2" href="javascript:void(0);">主页2</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class=""><a><i class="fa fa-sitemap"></i>销售管理<span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a class="page_url"  url="index2" href="javascript:void(0);">订单追踪</a>
+                    <li><a class="page_url"  url="tables" href="javascript:void(0);">询盘管理</a>
+                    <li><a class="page_url"  url="index2" href="javascript:void(0);">报价管理</a>
+                    <li><a class="page_url"  url="business/contract/list" href="javascript:void(0);">合同管理</a>
+                    <li><a class="page_url"  url="business/contract/list2" href="javascript:void(0);">合同管理2</a>
+                    <li><a class="page_url"  url="index2" href="javascript:void(0);">采购管理</a>
+                    <li><a class="page_url"  url="index2" href="javascript:void(0);">出运管理</a>
+                    <li><a class="page_url"  url="index2" href="javascript:void(0);">采购预算</a>
+                    <li><a class="page_url"  url="index2" href="javascript:void(0);">商城订单分配</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+          <!-- /sidebar menu -->
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- /menu footer buttons -->
+          <div class="sidebar-footer hidden-small">
+            <a data-toggle="tooltip" data-placement="top" title="Settings">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Lock">
+              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>
+          </div>
+          <!-- /menu footer buttons -->
+        </div>
+      </div>
+
+
+
+      <!-- top navigation -->
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <img src="production/images/img.jpg" alt="">John Doe
+                  <span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="javascript:;"> Profile</a></li>
+                  <li>
+                    <a href="javascript:;">
+                      <span class="badge bg-red pull-right">50%</span>
+                      <span>Settings</span>
+                    </a>
+                  </li>
+                  <li><a href="javascript:;">Help</a></li>
+                  <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                </ul>
+              </li>
+
+              <li role="presentation" class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-envelope-o"></i>
+                  <span class="badge bg-green">6</span>
+                </a>
+                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                  <li>
+                    <a>
+                      <span class="image"><img src="production/images/img.jpg" alt="Profile Image" /></span>
+                      <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                      <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <span class="image"><img src="production/images/img.jpg" alt="Profile Image" /></span>
+                      <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                      <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <span class="image"><img src="production/images/img.jpg" alt="Profile Image" /></span>
+                      <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                      <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <span class="image"><img src="production/images/img.jpg" alt="Profile Image" /></span>
+                      <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                      <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                    </a>
+                  </li>
+                  <li>
+                    <div class="text-center">
+                      <a>
+                        <strong>See All Alerts</strong>
+                        <i class="fa fa-angle-right"></i>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- /top navigation -->
+
+
+
+      <!-- page content -->
+      <div id="content" role="tabpanel" data-example-id="togglable-tabs">
+        <ul id="myTab" class="nav nav-tabs bar_tabs navml" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#1"  role="tab" data-toggle="tab" aria-expanded="true">Home</a>
+          </li>
+          <li role="presentation" class="">
+            <a href="#2"  role="tab" data-toggle="tab" aria-expanded="false">Table</a><em onclick="x(this)">x</em>
+          </li>
+          <li role="presentation" class="">
+            <a href="#3"  role="tab"  data-toggle="tab" aria-expanded="false">Form</a><em onclick="x(this)">x</em>
+          </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+          <div role="tabpanel" class="tab-pane fade active in" id="1" aria-labelledby="home-tab">
+              <div class="right_col" role="main">
+                <iframe width="100%" frameborder="0"  src="/page.do?url=production/home" style="min-height: 1654px;"></iframe>
+              </div>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="2" aria-labelledby="profile-tab">
+            <div class="right_col" role="main">
+              <iframe width="100%" frameborder="0"  src="/page.do?url=production/tables_dynamic" style="min-height: 1654px;"></iframe>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="3" aria-labelledby="profile-tab">
+            <div class="right_col" role="main">
+              <iframe width="100%" frameborder="0"  src="/page.do?url=production/form" style="min-height: 1654px;"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /page content -->
+
+
+
+
+      <!-- footer content -->
+      <footer>
+        <div class="pull-right">
+          Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
+    </div>
+  </div>
+
+
+  <div id="google_translate_element" style="position:absolute;bottom:10px;right:10px;z-index:2000;opacity:0.7"></div>
+  <script>
+    function googleTranslateElementInit() {
+
+      new google.translate.TranslateElement(
+              {
+                //这个是当前页面的原语言，便于插件精确翻译
+                pageLanguage: 'zh-CN',
+                //这个是你需要翻译的语言，比如你只需要翻译成越南和英语，这里就只写en,vi
+                includedLanguages: 'en,zh-CN',
+                //选择语言的样式，这个是面板，还有下拉框的样式，具体的记不到了，找不到api~~
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                //自动显示翻译横幅，就是翻译后顶部出现的那个，有点丑，这个属性没有用的话，请看文章底部的其他方法
+                autoDisplay: false,
+                //还有些其他参数，由于原插件不再维护，找不到详细api了，将就了，实在不行直接上dom操作
+              },
+              'google_translate_element'//触发按钮的id
+      );
+
+    }
+  </script>
+  <script src="https://translate.google.cn/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- jQuery -->
+  <script src="/static/vendors/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- bootstrap-progressbar -->
+  <script src="/static/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+  <!-- Custom Theme Scripts -->
+  <script src="/static/build/js/custom.min.js"></script>
+  <!-- index -->
+  <script src="/static/src/js/index.js"></script>
+
+
+
+  </body>
+
+</html>
+<script>
+
+</script>
