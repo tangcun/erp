@@ -25,7 +25,7 @@
         <jstl.version>1.2</jstl.version>
         <javaee-api.version>7.0</javaee-api.version>
         <!-- spring版本号 -->
-        <spring.version>4.2.6.RELEASE</spring.version>
+        <spring.version>5.2.22.RELEASE</spring.version>
         <!-- dubbo版本号 -->
         <dubbo.version>2.5.3</dubbo.version>
         <!-- zookeeper版本号 -->
