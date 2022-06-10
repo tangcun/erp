@@ -27,7 +27,7 @@
         <!-- spring版本号 -->
         <spring.version>4.2.6.RELEASE</spring.version>
         <!-- dubbo版本号 -->
-        <dubbo.version>2.5.3</dubbo.version>
+        <dubbo.version>2.6.12</dubbo.version>
         <!-- zookeeper版本号 -->
         <zookeeper.version>3.4.6</zookeeper.version>
         <maven.compiler.source>1.8</maven.compiler.source>
